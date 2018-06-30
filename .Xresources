@@ -1,0 +1,27 @@
+! ensure transparency in urxvt
+URxvt*transparent: true
+URxvt*shading: 30
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! set font
+URxvt.font: xft:Hack:size=12
+
+! change leatters space
+URxvt.letterSpace: -1
+
+! url clicable
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+! disable scrollbar
+URxvt.scrollBar: false
+
