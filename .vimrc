@@ -40,7 +40,7 @@ set history     =10000
 set undofile
 
 set clipboard=unnamed
-set guifont=HackNerdFontCompleteM-Regular:h14
+set guifont=CascadiaCode-Regular:h14
 
 " MacOs only configs
 if has('macunix')
