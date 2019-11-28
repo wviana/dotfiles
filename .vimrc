@@ -41,7 +41,11 @@ set undofile
 
 set clipboard=unnamed
 set guifont=HackNerdFontCompleteM-Regular:h14
-set macmeta
+
+" MacOs only configs
+if has('macunix')
+    set macmeta
+endif
 
 
 
