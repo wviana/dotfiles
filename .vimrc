@@ -112,9 +112,6 @@ nnoremap <Leader>st :silent term<CR>
 tnoremap <C-b>%  <C-w>:silent vertical term<CR>
 tnoremap <C-b>"  <C-w>:silent term<CR>
 
-let g:yaasita_slack_token = "xoxp-184520701937-185144327972-554677405376-afe75a170db9b5ab995e2ce070a70193"
-
-
 call plug#begin()
 Plug 'tweekmonster/braceless.vim', { 'for': 'python' }
 Plug 'ctrlpvim/ctrlp.vim'
