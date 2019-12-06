@@ -33,7 +33,7 @@ set splitbelow                    " Open new windows below the current window.
 set splitright                    " Open new windows right of the current window.
 
 set cursorline                    " Find the current line quickly.
-set cursorcolumn                  " Find the current column quickly.
+set nocursorcolumn                 " Find the current column quickly.
 set report      =0                " Always report changed lines.
 set synmaxcol   =200              " Only highlight the first 200 columns.
 set history     =10000
