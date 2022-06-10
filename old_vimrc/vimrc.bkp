@@ -1,0 +1,88 @@
+set nocompatible
+set smartindent
+set incsearch
+set nowrap
+set linebreak
+set number
+set relativenumber
+set wildmenu
+set ignorecase
+set clipboard=unnamedplus
+set splitright
+set splitbelow
+
+" Remove some gui stuff
+set guioptions-=m    " Remove menu
+set guioptions-=T    " Remove Toolbal
+" set guioptions-=L
+" set guioptions-=r
+
+syntax on
+filetype plugin on
+filetype indent on
+runtime! ftplugin/man.vim 
+
+let mapleader=' '
+nnoremap <Leader>o mmo<Esc>`m
+nnoremap <Leader>O mmO<Esc>`m
+nnoremap <Leader>vrc :e ~/.vimrc<CR>
+
+" Unable arrows and Q
+nnoremap Q       <nop>
+noremap  <Up>    <nop>
+noremap  <Down>  <nop>
+noremap  <Left>  <nop>
+noremap  <Right> <nop>
+
+" Better terminal
+tnoremap :: <C-w>:
+tnoremap <C-Esc> <C-w>N
+" Tmux like
+tmap     <silent> <C-b>% ::silent vertical terminal<CR>
+nnoremap <silent> <Leader><C-b>% :vertical terminal<CR>
+tmap     <silent> <C-b>" ::silent terminal<CR>
+nnoremap <silent> <Leader><C-b>" :terminal<CR>
+tmap     <silent> <C-b>c ::silent tab terminal<CR>
+nnoremap <silent> <Leader><C-b>c :tab terminal<CR>
+tmap     <silent> <C-b>n ::silent tabnext<CR>
+tmap     <silent> <C-b>p ::silent tabprevious<CR>
+" Resize when changing to normal mode, so no wrap
+function! ResizeTerminalForNormalMode()
+    let b:terminal_mode_columns = term_getsize('%')[1]
+    let l:terminal_current_line = line("$")
+    let l:size_to_increase      = max([strlen(l:terminal_current_line), 3])
+    let l:new_window_width      = b:terminal_mode_columns + l:size_to_increase
+    execute 'vertical resize' l:new_window_width
+endfunction
+
+function! RestoreTerminalForInsertMode()
+    execute 'vertical resize' b:terminal_mode_columns
+endfunction
+
+augroup BetterTerminal
+	autocmd!
+	autocmd CursorMoved *  if &buftype == 'terminal' && mode() == 'n' | call ResizeTerminalForNormalMode()| endif
+	autocmd TerminalOpen * nnoremap <buffer> <silent> i :call RestoreTerminalForInsertMode()<CR>i
+augroup END
+
+
+call plug#begin('~/.vim/plugged')
+Plug 'morhetz/gruvbox'
+Plug 'Shougo/vimfiler.vim'
+Plug 'Shougo/unite.vim'
+Plug 'vim-scripts/zoom.vim'
+Plug 'kien/ctrlp.vim'
+call plug#end()
+
+
+colorscheme gruvbox
+set background=dark
+
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading\ --color=never
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+    let g:ctrlp_use_caching = 0
+endif
+
+set guifont=Hack\ 12
