@@ -25,7 +25,7 @@ export PATH="/home/wviana/bin:/home/wviana/.local/bin/:$PATH"
 alias ls && unalias ls
 function ls() { # Call exa when stdout is terminal, otherwise default ls command.
     if [ -t 1 ]; then
-        exa --icons $@
+        exa --icons --sort=modified $@
     else
         env ls $@
     fi

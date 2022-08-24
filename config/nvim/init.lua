@@ -43,7 +43,7 @@ require "paq" {
   'hrsh7th/cmp-nvim-lsp';
   'hrsh7th/cmp-buffer';
   'hrsh7th/nvim-cmp';
-
+  
   -- Hex Colors
   'norcalli/nvim-colorizer.lua'
 }
