@@ -2,11 +2,11 @@
 
 
 # NeoFetch
-[[ $PWD = $HOME ]] && neofetch&
+[[ $PWD = $HOME ]] && clear && macchina -U
 
 # OneFetch
 function onefetch_auto_env() {
-    [[ -d .git ]] && onefetch --no-palette
+    [[ -d .git ]] && onefetch --no-color-palette
 }; onefetch_auto_env; chpwd_functions+=(onefetch_auto_env)
 
 # key-bindings
@@ -32,8 +32,7 @@ function ls() { # Call exa when stdout is terminal, otherwise default ls command
 }
 alias ll="ls -l"
 alias la="ll -a"
-alias p="sudo pacman"
-alias pk="pikaur"
+alias p="paru"
 alias docker="sudo docker"
 alias r="ranger"
 alias vim="nvim"
