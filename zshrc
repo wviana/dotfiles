@@ -21,7 +21,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 
 # Personal
-export PATH="/home/wviana/bin:/home/wviana/.local/bin/:$PATH"
+[[ -d $HOME/bin ]] && export PATH="$HOME/.local/bin:$PATH"
+[[ -d $HOME/.local/bin ]] && export PATH="$HOME/.local/bin:$PATH"
+[[ -d $PREFIX/opt/flutter ]] && export PATH="$PREFIX/opt/flutter/bin:$PATH"
+
 alias ls && unalias ls
 function ls() { # Call exa when stdout is terminal, otherwise default ls command.
     if [ -t 1 ]; then
@@ -66,6 +69,10 @@ export KUBECONFIG="/home/wviana/.config/kubeconfig.yaml"
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 wait ################## IMPORTANT #####################
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

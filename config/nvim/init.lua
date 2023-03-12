@@ -158,7 +158,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 local nvim_lsp = require'lspconfig'
 local servers = {
   'tsserver', 'html', 'cssls', 'tailwindcss', 'gradle_ls', 'kotlin_language_server',
-  'sumneko_lua', 'eslint', 'gopls', 'rust_analyzer', 'pyright' }
+  'lua_ls', 'eslint', 'gopls', 'rust_analyzer', 'pyright', 'dartls' }
 
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
@@ -233,11 +233,6 @@ require'gitsigns'.setup {}
 require'indent_blankline'.setup {
   show_end_of_line = true,
   show_current_context = true,
-}
-
--- Colorizer Config
-require 'colorizer'.setup {
-  'css'
 }
 
 -- Scroll
